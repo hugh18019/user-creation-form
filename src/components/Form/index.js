@@ -53,16 +53,25 @@ const Form = () => {
                 <div>
                     <label htmlFor="occupation">Occupation:</label>
                     <select>
-                        <option>Choose</option>
                         {occupations.map(( occupation, index ) => (
                             <option key={index}>{occupation}</option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="state">State:</label>
+                    <select>
+                        {states.map(( state, index ) => (
+                            <option key={index}>
+                                {state.name}, {state.abbreviation}
+                            </option>
                         ))}
                     </select>
                 </div>
             </form>
 
         </div>
-    )
+    );
 }
 
 export default Form;
