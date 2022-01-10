@@ -9,8 +9,6 @@ const Form = () => {
     const [ occupations, setOccupations ] = useState([]);
     const [ states, setStates ] = useState([]);
 
-
-
     useEffect(() => {
         fetch( requestUrl )
                 .then( function ( response ) {
@@ -56,7 +54,9 @@ const Form = () => {
                     <label htmlFor="occupation">Occupation:</label>
                     <select>
                         <option>Choose</option>
-                        <option value='1'>One</option>
+                        {occupations.map(( occupation, index ) => (
+                            <option key={index}>{occupation}</option>
+                        ))}
                     </select>
                 </div>
             </form>
