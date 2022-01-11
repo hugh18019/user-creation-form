@@ -40,3 +40,27 @@
     -webkit-box-sizing:content-box; 
     box-sizing:content-box;
 }
+
+
+@media screen and (max-width: 768px) {
+
+    #form {
+        width: 80%;
+    }
+
+    .field {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .field label {
+        width: 100%;
+        padding-bottom: 4px;
+    }
+
+    #submit-btn {
+        margin-top: 10px;
+    }
+}

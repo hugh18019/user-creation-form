@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
 
-import { Trie, TrieNode } from '../Trie'
+import { Trie, TrieNode } from '../Trie/index';
+import dict from '../Trie/dictionary';
 
-export function pred_occupation () {
+var trie = new Trie();
+trie.buildTrie();
+var map = Object();
 
+export function pred_occupation ( str ) {
+
+    var words = trie.autocomplete( str );
+
+    return "Predicted Occupations";
 }
 
 
@@ -66,6 +74,13 @@ const Form = () => {
     
     };
 
+    const handleOccStaChange = async ( event ) => {
+
+        const { name, value } = event.target;
+
+        pred_occupation(value);
+
+    }
 
 
     useEffect(() => {
@@ -123,6 +138,7 @@ const Form = () => {
                         id="occupation"
                         onChange={( event ) => handleChange( event )}
                     >
+                        <option></option>
                         {occupations.map(( occupation, index ) => (
                             <option key={index}>
                                 {occupation}
@@ -136,8 +152,10 @@ const Form = () => {
                         name="state"
                         type="state"
                         id="state"
+                        list="state"
                         onChange={( event ) => handleChange( event )}
                     >
+                        <option></option>
                         {states.map(( state, index ) => (
                             <option key={index}>
                                 {state.name}, {state.abbreviation}
@@ -145,7 +163,8 @@ const Form = () => {
                         ))}
                     </select>
                 </div>
-                <button type="submit">Submit</button>
+
+                <button id="submit-btn" type="submit">Submit</button>
             </form>
 
         </div>

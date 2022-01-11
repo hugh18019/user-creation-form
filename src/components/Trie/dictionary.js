@@ -1,4 +1,4 @@
-export const dict = [ 
+const dict = [ 
     "Head of Shrubbery",
     "Interim Substitute Teacher",
     "Water Softener",
@@ -13,3 +13,5 @@ export const dict = [
     "Widget Fabricator",
     "Underwater Basket Weaver"
 ]
+
+export default dict;

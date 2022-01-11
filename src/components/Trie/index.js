@@ -1,6 +1,34 @@
-import dict from "./dictionary";
+const dict = [ 
+    "Head of Shrubbery",
+    "Interim Substitute Teacher",
+    "Water Softener",
+    "Listener of the House",
+    "Really Good Dancer",
+    "Gainfully Unemployed",
+    "Alexa Impersonator",
+    "Chard Farmer",
+    "Chief Frolicker (Jolly)",
+    "Entry-level Seat Recliner",
+    "CEO (Summer Internship)",
+    "Widget Fabricator",
+    "Underwater Basket Weaver"
+]
 
-var map = Object();
+var map = {
+    "Head of Shrubbery": 0,
+    "Interim Substitute Teacher": 1,
+    "Water Softener": 2,
+    "Listener of the House": 3,
+    "Really Good Dancer": 4,
+    "Gainfully Unemployed": 5,
+    "Alexa Impersonator": 6,
+    "Chard Farmer": 7,
+    "Chief Frolicker (Jolly)": 8,
+    "Entry-level Seat Recliner": 9,
+    "CEO (Summer Internship)": 10,
+    "Widget Fabricator": 11,
+    "Underwater Basket Weaver": 12,
+};
 
 export class Trie {
     root;
@@ -65,6 +93,12 @@ export class Trie {
 
     autocomplete ( str ) {
 
+        if ( dict[ map[ str ] ] == str ) {
+            console.log(str);
+            return str;
+        }
+            
+
         var { cur: root } = this.search( str );
 
         if ( !root.value ) {
@@ -92,6 +126,23 @@ export class Trie {
                 var path = new_path + children[ key ].value;
                 var new_obj = { root, path };
                 queue.push( new_obj );
+            }
+        }
+
+        // console.log( "words", words );
+        // console.log( "map", map );
+        // console.log( "dict", dict );
+
+        for ( let word of words ) {
+            if ( word ) {
+                console.log( "word", word );
+                console.log( "map[word]", map[word] );
+
+                var str_in_dict = dict[ map[ word ] ].split(' ');
+
+                console.log( 'str_in_dict', str_in_dict )
+                if ( word == str_in_dict[0] )
+                    console.log( 'dict[ map[ word ] ]',dict[ map[ word ] ] );
             }
         }
 
