@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
 
+import { Trie, TrieNode } from '../Trie'
+
+export function pred_occupation () {
+
+}
+
+
 const Form = () => {
 
     const requestUrl = "https://frontend-take-home.fetchrewards.com/form";
@@ -50,13 +57,7 @@ const Form = () => {
 
     const handleChange = async ( event ) => {
 
-        console.log( 'event.target.name', event.target.name );
-        console.log( 'event.target.value', event.target.value );
-
         const { name, value } = event.target;
-
-        console.log( 'name', name );
-        console.log( 'value', value );
 
         setFormState({
             ...formState,
@@ -64,6 +65,8 @@ const Form = () => {
         })
     
     };
+
+
 
     useEffect(() => {
         fetch( requestUrl )
