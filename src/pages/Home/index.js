@@ -5,9 +5,8 @@ import vector from '../../assets/images/vector.png';
 const Home = () => {
 
     return (
-        <div id="home-container">
-            This is the Home page
-            <img id="img" src={vector} alt="image" />
+        <div id="home-container" style={{backgroundImage: "url(/images/vector.png)", width:"100vw", height: "100vh"}}>
+            {/* <img id="img" src={vector} alt="image" /> */}
             <Form />
         </div>
     )
