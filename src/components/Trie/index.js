@@ -30,12 +30,14 @@ var map = {
     "Underwater Basket Weaver": 12,
 };
 
+// Definitions of a Trie
 export class Trie {
     root;
     constructor( TrieNode ) {
         this.root = TrieNode;
     }
 
+    // Insert each character of the input str into the trie if it's not already there
     insert( str ) {
         if ( !this.root )
             this.root = new TrieNode ();
@@ -62,6 +64,7 @@ export class Trie {
         }
     }
 
+    // Builds the trie from the dictionary
     buildTrie () {
         for ( let i = 0; i < dict.length; i++ ) {
             var each = dict[i].split(' ');
@@ -72,6 +75,11 @@ export class Trie {
         }
     }
 
+    // Searches for the input str in the trie
+    // Start at the root and goes one level down each iteration looking for one character of the input string
+    // one character per iteration. 
+    // If in every level the trie finds the next character in the input string, the input string is in the trie
+    // If not then it's not in the trie;
     search ( str ) {
         var cur = this.root;
         var len = str.length;
@@ -91,7 +99,10 @@ export class Trie {
         return { cur, message };
     }
 
+    // Uses Breadth First Search to look for all next closest words of the input string
     autocomplete ( str ) {
+
+        var results = Array();
 
         if ( dict[ map[ str ] ] == str ) {
             console.log(str);
@@ -121,6 +132,7 @@ export class Trie {
 
             var children = root.children;
 
+            // Pushes onto the queue all possible next characters that the current path can absorb
             for ( let key in children ) {
                 var root = children[ key ];
                 var path = new_path + children[ key ].value;
@@ -129,28 +141,26 @@ export class Trie {
             }
         }
 
-        // console.log( "words", words );
-        // console.log( "map", map );
-        // console.log( "dict", dict );
-
+        // For each closest word found, finds the corresponding entry in the dictionary it belongs to
+        // For example, if the word is "Head", then its corresponding entry in the dictionary is "Head of Shruberry"
+        // Pushes all such entries onto the results array and returns the results array.
         for ( let word of words ) {
             if ( word ) {
-                console.log( "word", word );
-                console.log( "map[word]", map[word] );
-
                 var str_in_dict = dict[ map[ word ] ].split(' ');
 
-                console.log( 'str_in_dict', str_in_dict )
-                if ( word == str_in_dict[0] )
-                    console.log( 'dict[ map[ word ] ]',dict[ map[ word ] ] );
+                if ( word == str_in_dict[0] ) {
+                    console.log( 'dict[ map[ word ] ]', dict[ map[ word ] ] );
+                    results.push( dict[ map[ word ] ] );
+                }
             }
         }
 
-        return words;
+        return results;
 
     }
 }
 
+// Definition of a TrieNode
 export class TrieNode {
     value;
     children = Object();
