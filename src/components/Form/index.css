@@ -18,6 +18,9 @@
 
 .field label {
     width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .field input {
@@ -41,6 +44,19 @@
     box-sizing:content-box;
 }
 
+.btns {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#submit-btn, #reset-btn {
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+}
 
 @media screen and (max-width: 768px) {
 

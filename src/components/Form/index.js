@@ -24,7 +24,7 @@ const Form = () => {
     const [ occupations, setOccupations ] = useState([]);
     const [ states, setStates ] = useState([]);
 
-    const [ formState, setFormState ] = useState({ email: '', password: '' });
+    const [ formState, setFormState ] = useState({ fullName: '', email: '', password: '', occupation: '', state: '' });
 
 
     const handleFormSubmit = async ( event ) => {
@@ -74,6 +74,14 @@ const Form = () => {
     
     };
 
+
+    const handleResetInput = ( event ) => {
+
+            setFormState({ fullName: '', email: '', password: '', occupation: '', state: '' });
+
+    }
+
+
     const handleOccStaChange = async ( event ) => {
 
         const { name, value } = event.target;
@@ -107,6 +115,7 @@ const Form = () => {
                     <label htmlFor="fullName">Full Name:</label>
                     <input 
                         name="fullName"
+                        value={formState.fullName}
                         type="fullName"
                         id="fullName"
                         onChange={handleChange}
@@ -116,6 +125,7 @@ const Form = () => {
                     <label htmlFor="email">Email:</label>
                     <input 
                         name="email"
+                        value={formState.email}
                         type="email"
                         id="email"
                         onChange={handleChange}
@@ -125,6 +135,7 @@ const Form = () => {
                     <label htmlFor="pwd">Password:</label>
                     <input 
                         name="password"
+                        value={formState.password}
                         type="password"
                         id="pwd"
                         onChange={handleChange}
@@ -134,6 +145,7 @@ const Form = () => {
                     <label htmlFor="occupation">Occupation:</label>
                     <select 
                         name="occupation"
+                        value={formState.occupation}
                         type="occupation"
                         id="occupation"
                         onChange={( event ) => handleChange( event )}
@@ -150,6 +162,7 @@ const Form = () => {
                     <label htmlFor="state">State:</label>
                     <select
                         name="state"
+                        value={formState.state}
                         type="state"
                         id="state"
                         list="state"
@@ -164,8 +177,12 @@ const Form = () => {
                     </select>
                 </div>
 
-                <button id="submit-btn" type="submit">Submit</button>
+                <div className="btns">
+                    <button id="submit-btn" type="submit">Submit</button>
+                    <button id="reset-btn" type="reset" onClick={handleResetInput}>Clear</button>
+                </div>
             </form>
+            
 
         </div>
     );
