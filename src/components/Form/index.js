@@ -108,8 +108,7 @@ const Form = () => {
     }, [formState])
 
     return (
-        <div>
-            This is the Form component
+        <div id="container">
             <form id="form" onSubmit={handleFormSubmit}>
                 <div className="field">
                     <label htmlFor="fullName">Full Name:</label>
@@ -143,38 +142,42 @@ const Form = () => {
                 </div>
                 <div className="field">
                     <label htmlFor="occupation">Occupation:</label>
-                    <select 
+                    <input 
                         name="occupation"
                         value={formState.occupation}
                         type="occupation"
                         id="occupation"
+                        list="occupations"
                         onChange={( event ) => handleChange( event )}
-                    >
+                    />
+                    <datalist id="occupations">
                         <option></option>
                         {occupations.map(( occupation, index ) => (
                             <option key={index}>
                                 {occupation}
                             </option>
                         ))}
-                    </select>
+                    </datalist>
+
                 </div>
                 <div className="field">
                     <label htmlFor="state">State:</label>
-                    <select
+                    <input
                         name="state"
                         value={formState.state}
                         type="state"
                         id="state"
-                        list="state"
+                        list="states"
                         onChange={( event ) => handleChange( event )}
-                    >
-                        <option></option>
-                        {states.map(( state, index ) => (
-                            <option key={index}>
-                                {state.name}, {state.abbreviation}
-                            </option>
-                        ))}
-                    </select>
+                    />
+                        <datalist id="states">
+                            <option></option>
+                            {states.map(( state, index ) => (
+                                <option key={index}>
+                                    {state.name}, {state.abbreviation}
+                                </option>
+                            ))}
+                        </datalist>
                 </div>
 
                 <div className="btns">
