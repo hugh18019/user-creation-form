@@ -40,7 +40,7 @@ const Form = () => {
 
         if ( !formState.fullName || !formState.email || !formState.password 
             || !formState.occupation || !formState.state ) {
-                alert( "Please enter all required fields." );
+                myRef.current.innerHTML = "Please enter all required fields.";
             }
         else {
             fetch("https://frontend-take-home.fetchrewards.com/form", {
@@ -90,6 +90,7 @@ const Form = () => {
     // This causes a rerender of the input fields with their initial state, therefore clearing the input fields
     const handleResetInput = ( event ) => {
 
+        myRef.current.innerHTML = '';
         setFormState({ fullName: '', email: '', password: '', occupation: '', state: '' });
 
     }
@@ -122,7 +123,7 @@ const Form = () => {
     return (
         <div id="container">
             {/* The area that displays the result from the POST request */}
-            <div id="result-area" ref={(element) => myRef.current = element}></div>
+            <div id="result-area" ref={(element) => myRef.current = element}> </div>
 
             <form id="form" onSubmit={handleFormSubmit}>
                 <div className="field">

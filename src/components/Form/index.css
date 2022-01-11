@@ -9,18 +9,25 @@
 }
 
 #result-area {
+    height: 30px;
+    font-size: larger;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     margin-top:5%;
 }
 
 /* Displays the input fields as a column 
    Horizontally centers the input fields*/
 #form {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     margin: auto;
+    margin-top: 10%;
 }
 
 /* Displays each input field as a row */
@@ -89,6 +96,8 @@
 /* Responsiveness features */
 @media screen and ( max-width: 380px ) {
     #form {
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
         height: 40%;
         width: 100%;
     }
@@ -103,10 +112,12 @@
 }
 
 
-@media screen and ( min-width: 381px ) and ( max-width: 768px ) {
+@media screen and ( min-width: 381px ) and ( max-width: 769px ) {
 
     #form {
+        color: black;
         width: 80%;
+        justify-content: space-between;
     }
 
     /* Displays the labels on top of each input field to save space
@@ -114,14 +125,14 @@
     .field {
         height: 60px;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
-        padding: 10px;
+        padding-bottom: 6px;
     }
 
     .field label {
         width: 100%;
-        padding-bottom: 4px;
+        padding-bottom: 12px;
     }
 
     .field input {
@@ -133,18 +144,19 @@
     }
 }
 
-@media screen and ( min-width: 769px ) and ( max-width: 1030px ) {
+@media screen and ( min-width: 770px ) and ( max-width: 1030px ) {
     #form {
+        color: black;
         height: 40%;
         width: 70%;
     }
 
     .field {
-        height: 60px;
+        height: 50px;
     }
 
     .field label {
         height: 100%;
-        font-size: x-large;
+        font-size: large;
     }
 }
