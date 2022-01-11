@@ -11,7 +11,41 @@ const Form = () => {
     const [ formState, setFormState ] = useState({ email: '', password: '' });
 
 
+    const handleFormSubmit = async ( event ) => {
+        event.preventDefault();
 
+        if ( !formState.fullName || !formState.email || !formState.password 
+            || !formState.occupation || !formState.state ) {
+                alert( "Please enter all required fields." );
+            }
+        else {
+
+            fetch("https://frontend-take-home.fetchrewards.com/form", {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: formState.fullName,
+                    email: formState.email,
+                    password: formState.password,
+                    occupation: formState.occupation,
+                    state: formState.state
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then( function( response ) {
+                if ( response.ok ) {
+                    alert( "Successfully created a new user." );
+                }
+                else {
+                    alert( response.status );
+                    return Promise.reject( response.status );
+                }
+            })
+            .catch( function( error ) {
+                alert( "Could not create a new user. Please try again." );
+            })
+        }
+    
+    }
 
 
     const handleChange = async ( event ) => {
@@ -50,13 +84,14 @@ const Form = () => {
     return (
         <div>
             This is the Form component
-            <form>
+            <form onSubmit={handleFormSubmit}>
                 <div>
                     <label htmlFor="fullName">Full Name:</label>
                     <input 
                         name="fullName"
                         type="fullName"
                         id="fullName"
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
@@ -65,6 +100,7 @@ const Form = () => {
                         name="email"
                         type="email"
                         id="email"
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
@@ -73,6 +109,7 @@ const Form = () => {
                         name="password"
                         type="password"
                         id="pwd"
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
@@ -105,6 +142,7 @@ const Form = () => {
                         ))}
                     </select>
                 </div>
+                <button type="submit">Submit</button>
             </form>
 
         </div>
