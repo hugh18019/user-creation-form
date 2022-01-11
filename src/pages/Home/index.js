@@ -4,7 +4,7 @@ import Form from '../../components/Form';
 const Home = () => {
 
     return (
-        <div>
+        <div id="home-container">
             This is the Home page
             <Form />
         </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './index.css';
 
 const Form = () => {
 
@@ -19,7 +20,6 @@ const Form = () => {
                 alert( "Please enter all required fields." );
             }
         else {
-
             fetch("https://frontend-take-home.fetchrewards.com/form", {
                 method: 'POST',
                 body: JSON.stringify({
@@ -84,8 +84,8 @@ const Form = () => {
     return (
         <div>
             This is the Form component
-            <form onSubmit={handleFormSubmit}>
-                <div>
+            <form id="form" onSubmit={handleFormSubmit}>
+                <div className="field">
                     <label htmlFor="fullName">Full Name:</label>
                     <input 
                         name="fullName"
@@ -94,7 +94,7 @@ const Form = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="field">
                     <label htmlFor="email">Email:</label>
                     <input 
                         name="email"
@@ -103,7 +103,7 @@ const Form = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="field">
                     <label htmlFor="pwd">Password:</label>
                     <input 
                         name="password"
@@ -112,7 +112,7 @@ const Form = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="field">
                     <label htmlFor="occupation">Occupation:</label>
                     <select 
                         name="occupation"
@@ -127,7 +127,7 @@ const Form = () => {
                         ))}
                     </select>
                 </div>
-                <div>
+                <div className="field">
                     <label htmlFor="state">State:</label>
                     <select
                         name="state"
